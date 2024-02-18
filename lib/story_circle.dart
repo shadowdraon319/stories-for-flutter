@@ -122,7 +122,7 @@ class StoryCircle extends StatelessWidget {
               elevation: 5,
               child: Container(
                 width: MediaQuery.of(context).size.width /
-                    3, // Specify your desired width
+                    2, // Specify your desired width
                 height: 175, // Specify your desired height
                 decoration: BoxDecoration(
                   image: DecorationImage(
