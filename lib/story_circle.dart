@@ -95,25 +95,25 @@ class StoryCircle extends StatelessWidget {
           const SizedBox(height: 7),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => FullPageView(
-                    storiesMapList: story,
-                    storyNumber: selectedIndex,
-                    fullPagetitleStyle: fullPagetitleStyle,
-                    displayProgress: displayProgress,
-                    fullpageVisitedColor: fullpageVisitedColor,
-                    fullpageUnvisitedColor: fullpageUnvisitedColor,
-                    fullpageThumbnailSize: fullpageThumbnailSize,
-                    showStoryNameOnFullPage: showStoryNameOnFullPage,
-                    showThumbnailOnFullPage: showThumbnailOnFullPage,
-                    storyStatusBarColor: storyStatusBarColor,
-                    onPageChanged: onPageChanged,
-                    autoPlayDuration: autoPlayDuration,
-                  ),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   CupertinoPageRoute(
+              //     builder: (context) => FullPageView(
+              //       storiesMapList: story,
+              //       storyNumber: selectedIndex,
+              //       fullPagetitleStyle: fullPagetitleStyle,
+              //       displayProgress: displayProgress,
+              //       fullpageVisitedColor: fullpageVisitedColor,
+              //       fullpageUnvisitedColor: fullpageUnvisitedColor,
+              //       fullpageThumbnailSize: fullpageThumbnailSize,
+              //       showStoryNameOnFullPage: showStoryNameOnFullPage,
+              //       showThumbnailOnFullPage: showThumbnailOnFullPage,
+              //       storyStatusBarColor: storyStatusBarColor,
+              //       onPageChanged: onPageChanged,
+              //       autoPlayDuration: autoPlayDuration,
+              //     ),
+              //   ),
+              // );
             },
             child: Card(
               clipBehavior: Clip.antiAlias,
