@@ -198,8 +198,7 @@ class FullPageViewState extends State<FullPageView> {
                           ),
                           if (displayProgress) // Check if progress display is enabled
                             Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              padding: const EdgeInsets.all(20.0),
                               decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(
                                     0.5), // Semi-transparent black for visibility
