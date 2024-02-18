@@ -115,18 +115,38 @@ class StoryCircle extends StatelessWidget {
                 ),
               );
             },
-            child: CircleAvatar(
-              radius: borderThickness != null
-                  ? altPadding + borderThickness!
-                  : altPadding + 1.5,
-              backgroundColor: highLightColor ?? const Color(0xffcc306C),
-              child: CircleAvatar(
-                backgroundColor: paddingColor ?? Colors.white,
-                radius: altPadding,
-                child: CircleAvatar(
-                    radius: altRadius,
-                    backgroundColor: Colors.white,
-                    backgroundImage: story![selectedIndex!].thumbnail),
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 5,
+              child: InkWell(
+                onTap: () {
+                  // Add your onTap functionality here, for example, navigating to a detailed story view
+                },
+                child: Container(
+                  width: 100, // Specify your desired width
+                  height: 150, // Specify your desired height
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: story![selectedIndex!].thumbnail,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      color: Colors.black.withOpacity(
+                          0.5), // Semi-transparent overlay for text visibility
+                      child: Text(
+                        story![selectedIndex!].name,
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
