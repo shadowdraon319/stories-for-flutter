@@ -280,7 +280,7 @@ class FullPageViewState extends State<FullPageView> {
                             : "",
                         textAlign: TextAlign.center, // Center the story name
                         style: GoogleFonts.poppins(
-                          fontSize: 22,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
