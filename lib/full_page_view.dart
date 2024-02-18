@@ -184,7 +184,7 @@ class FullPageViewState extends State<FullPageView> {
           Column(
             children: <Widget>[
               Container(
-                color: Colors.grey, // Background color set to gold
+                color: Colors.grey[900], // Background color set to gold
                 child: SafeArea(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -196,7 +196,7 @@ class FullPageViewState extends State<FullPageView> {
                       ),
                       if (displayProgress) // Check if progress display is enabled
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(
                                 0.5), // Semi-transparent black for visibility
