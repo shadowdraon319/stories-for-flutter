@@ -184,7 +184,7 @@ class FullPageViewState extends State<FullPageView> {
           Column(
             children: <Widget>[
               Container(
-                color: Colors.gold, // Background color set to gold
+                color: Colors.yellow, // Background color set to gold
                 child: SafeArea(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
