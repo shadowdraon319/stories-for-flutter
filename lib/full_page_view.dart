@@ -247,7 +247,7 @@ class FullPageViewState extends State<FullPageView> {
                                     ),
                               ),
                             ),
-                          Spacer(),
+
                           IconButton(
                             icon: Icon(Icons.share,
                                 color: Colors.white), // 'X' button on the left
