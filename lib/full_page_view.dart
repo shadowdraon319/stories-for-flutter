@@ -188,79 +188,84 @@ class FullPageViewState extends State<FullPageView> {
                 child: SafeArea(
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.close,
-                                color: Colors.white), // 'X' button on the left
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                          if (displayProgress) // Check if progress display is enabled
-                            Flexible(
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8.0,
-                                    horizontal: 12.0), // Adjusted padding
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(
-                                      0.5), // Semi-transparent black for visibility
-                                  borderRadius: BorderRadius.circular(
-                                      20), // Pill-shaped container
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: List.generate(
-                                        numOfCompleted(listLengths as List<int>,
-                                            selectedIndex!),
-                                        (index) => Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 2),
-                                          height: 2.5,
-                                          width:
-                                              15, // Consider adjusting if needed
-                                          decoration: BoxDecoration(
-                                            color: fullpageVisitedColor ??
-                                                const Color(0xff444444),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.close,
+                                  color:
+                                      Colors.white), // 'X' button on the left
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                            if (displayProgress) // Check if progress display is enabled
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                      horizontal: 8.0), // Adjusted padding
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(
+                                        0.5), // Semi-transparent black for visibility
+                                    borderRadius: BorderRadius.circular(
+                                        20), // Pill-shaped container
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: List.generate(
+                                          numOfCompleted(
+                                              listLengths as List<int>,
+                                              selectedIndex!),
+                                          (index) => Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 2),
+                                            height: 2.5,
+                                            width:
+                                                15, // Consider adjusting if needed
+                                            decoration: BoxDecoration(
+                                              color: fullpageVisitedColor ??
+                                                  const Color(0xff444444),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ) +
+                                        List.generate(
+                                          getCurrentLength(
+                                                  listLengths as List<int>,
+                                                  selectedIndex!) -
+                                              numOfCompleted(
+                                                  listLengths as List<int>,
+                                                  selectedIndex!) as int,
+                                          (index) => Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 2),
+                                            height: 2.5,
+                                            width:
+                                                15, // Consider adjusting if needed
+                                            decoration: BoxDecoration(
+                                              color: widget
+                                                      .fullpageUnvisitedColor ??
+                                                  Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
                                           ),
                                         ),
-                                      ) +
-                                      List.generate(
-                                        getCurrentLength(
-                                                listLengths as List<int>,
-                                                selectedIndex!) -
-                                            numOfCompleted(
-                                                listLengths as List<int>,
-                                                selectedIndex!) as int,
-                                        (index) => Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 2),
-                                          height: 2.5,
-                                          width:
-                                              15, // Consider adjusting if needed
-                                          decoration: BoxDecoration(
-                                            color:
-                                                widget.fullpageUnvisitedColor ??
-                                                    Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                        ),
-                                      ),
+                                  ),
                                 ),
                               ),
+                            IconButton(
+                              icon: Icon(Icons.share,
+                                  color: Colors
+                                      .white), // Example: Share button on the right
+                              onPressed: () {
+                                // Implement share functionality
+                              },
                             ),
-                          IconButton(
-                            icon: Icon(Icons.share,
-                                color: Colors
-                                    .white), // Example: Share button on the right
-                            onPressed: () {
-                              // Implement share functionality
-                            },
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
                       SizedBox(
