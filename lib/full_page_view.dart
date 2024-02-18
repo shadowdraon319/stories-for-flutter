@@ -184,96 +184,85 @@ class FullPageViewState extends State<FullPageView> {
           Column(
             children: <Widget>[
               Container(
-                color: storyStatusBarColor ?? Colors.black,
-                child: const SafeArea(
-                  child: Center(),
+                color: Colors.gold, // Background color set to gold
+                child: SafeArea(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.close,
+                            color: Colors.white), // 'X' button on the left
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      if (displayProgress) // Check if progress display is enabled
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(
+                                0.5), // Semi-transparent black for visibility
+                            borderRadius: BorderRadius.circular(
+                                20), // Pill-shaped container
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: List.generate(
+                                  numOfCompleted(
+                                      listLengths as List<int>, selectedIndex!),
+                                  (index) => Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 2),
+                                    height: 2.5,
+                                    width: 20, // Fixed width for each segment
+                                    decoration: BoxDecoration(
+                                      color: fullpageVisitedColor ??
+                                          const Color(0xff444444),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                ) +
+                                List.generate(
+                                  getCurrentLength(listLengths as List<int>,
+                                          selectedIndex!) -
+                                      numOfCompleted(listLengths as List<int>,
+                                          selectedIndex!) as int,
+                                  (index) => Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 2),
+                                    height: 2.5,
+                                    width: 20, // Fixed width for each segment
+                                    decoration: BoxDecoration(
+                                      color: widget.fullpageUnvisitedColor ??
+                                          Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                ),
+                          ),
+                        ),
+                      Spacer(), // Use Spacer to push 'X' button to the left and progress indicators to the right
+                    ],
+                  ),
                 ),
               ),
-              displayProgress
-                  ? Row(
-                      children: List.generate(
-                            numOfCompleted(
-                                listLengths as List<int>, selectedIndex!),
-                            (index) => Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.all(2),
-                                height: 2.5,
-                                decoration: BoxDecoration(
-                                    color: fullpageVisitedColor ??
-                                        const Color(0xff444444),
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        blurRadius: 10,
-                                        color: Colors.black,
-                                      )
-                                    ]),
-                              ),
-                            ),
-                          ) +
-                          List.generate(
-                            getCurrentLength(
-                                    listLengths as List<int>, selectedIndex!) -
-                                numOfCompleted(listLengths as List<int>,
-                                    selectedIndex!) as int,
-                            (index) => Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.all(2),
-                                height: 2.5,
-                                decoration: BoxDecoration(
-                                  color: widget.fullpageUnvisitedColor ??
-                                      Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  boxShadow: const [BoxShadow(blurRadius: 2)],
-                                ),
-                              ),
-                            ),
-                          ),
-                    )
-                  : const Center(),
-              const SizedBox(height: 5),
-              // Story name
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: (showThumbnailOnFullPage == null ||
-                            showThumbnailOnFullPage!)
-                        ? Image(
-                            width: fullpageThumbnailSize ?? 25,
-                            height: fullpageThumbnailSize ?? 25,
-                            image: storiesMapList![getStoryIndex(
-                                    listLengths as List<int>, selectedIndex!)]
-                                .thumbnail,
-                          )
-                        : const Center(),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          showStoryNameOnFullPage
-                              ? storiesMapList![getStoryIndex(
-                                      listLengths as List<int>, selectedIndex!)]
-                                  .name
-                              : "",
-                          style: widget.fullPagetitleStyle ??
-                              const TextStyle(
-                                color: Colors.white,
-                                shadows: [
-                                  Shadow(blurRadius: 10, color: Colors.black)
-                                ],
-                                fontSize: 13,
-                              ),
-                        ),
-                      ],
+              SizedBox(
+                  height: 10), // Space between the status bar and story name
+              Text(
+                showStoryNameOnFullPage
+                    ? storiesMapList![getStoryIndex(
+                            listLengths as List<int>, selectedIndex!)]
+                        .name
+                    : "",
+                textAlign: TextAlign.center, // Center the story name
+                style: widget.fullPagetitleStyle ??
+                    TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                ],
               ),
+              // Add other UI elements as needed below
             ],
-          ),
+          )
         ],
       ),
     );
