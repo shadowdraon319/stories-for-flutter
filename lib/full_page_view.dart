@@ -196,7 +196,9 @@ class FullPageViewState extends State<FullPageView> {
                       ),
                       if (displayProgress) // Check if progress display is enabled
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal:
+                                  20.0), // Increased padding for a wider pill
                           decoration: BoxDecoration(
                             color: Colors.black.withOpacity(
                                 0.5), // Semi-transparent black for visibility
@@ -212,7 +214,8 @@ class FullPageViewState extends State<FullPageView> {
                                     margin: const EdgeInsets.symmetric(
                                         horizontal: 2),
                                     height: 2.5,
-                                    width: 20, // Fixed width for each segment
+                                    width:
+                                        30, // Increased width for each progress segment
                                     decoration: BoxDecoration(
                                       color: fullpageVisitedColor ??
                                           const Color(0xff444444),
@@ -229,7 +232,8 @@ class FullPageViewState extends State<FullPageView> {
                                     margin: const EdgeInsets.symmetric(
                                         horizontal: 2),
                                     height: 2.5,
-                                    width: 20, // Fixed width for each segment
+                                    width:
+                                        30, // Increased width for each progress segment
                                     decoration: BoxDecoration(
                                       color: widget.fullpageUnvisitedColor ??
                                           Colors.white,
@@ -239,6 +243,7 @@ class FullPageViewState extends State<FullPageView> {
                                 ),
                           ),
                         ),
+
                       Spacer(), // Use Spacer to push 'X' button to the left and progress indicators to the right
                     ],
                   ),
