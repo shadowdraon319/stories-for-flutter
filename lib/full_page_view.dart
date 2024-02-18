@@ -247,7 +247,12 @@ class FullPageViewState extends State<FullPageView> {
                                     ),
                               ),
                             ),
-                          Spacer(), // Use Spacer to push 'X' button to the left and progress indicators to the right
+                          Spacer(),
+                          IconButton(
+                            icon: Icon(Icons.share,
+                                color: Colors.white), // 'X' button on the left
+                            onPressed: () => Navigator.pop(context),
+                          ), // Use Spacer to push 'X' button to the left and progress indicators to the right
                         ],
                       ),
                       SizedBox(
