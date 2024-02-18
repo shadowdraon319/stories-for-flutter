@@ -95,58 +95,54 @@ class StoryCircle extends StatelessWidget {
           const SizedBox(height: 7),
           InkWell(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   CupertinoPageRoute(
-              //     builder: (context) => FullPageView(
-              //       storiesMapList: story,
-              //       storyNumber: selectedIndex,
-              //       fullPagetitleStyle: fullPagetitleStyle,
-              //       displayProgress: displayProgress,
-              //       fullpageVisitedColor: fullpageVisitedColor,
-              //       fullpageUnvisitedColor: fullpageUnvisitedColor,
-              //       fullpageThumbnailSize: fullpageThumbnailSize,
-              //       showStoryNameOnFullPage: showStoryNameOnFullPage,
-              //       showThumbnailOnFullPage: showThumbnailOnFullPage,
-              //       storyStatusBarColor: storyStatusBarColor,
-              //       onPageChanged: onPageChanged,
-              //       autoPlayDuration: autoPlayDuration,
-              //     ),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => FullPageView(
+                    storiesMapList: story,
+                    storyNumber: selectedIndex,
+                    fullPagetitleStyle: fullPagetitleStyle,
+                    displayProgress: displayProgress,
+                    fullpageVisitedColor: fullpageVisitedColor,
+                    fullpageUnvisitedColor: fullpageUnvisitedColor,
+                    fullpageThumbnailSize: fullpageThumbnailSize,
+                    showStoryNameOnFullPage: showStoryNameOnFullPage,
+                    showThumbnailOnFullPage: showThumbnailOnFullPage,
+                    storyStatusBarColor: storyStatusBarColor,
+                    onPageChanged: onPageChanged,
+                    autoPlayDuration: autoPlayDuration,
+                  ),
+                ),
+              );
             },
             child: Card(
               clipBehavior: Clip.antiAlias,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               elevation: 5,
-              child: InkWell(
-                onTap: () {
-                  // Add your onTap functionality here, for example, navigating to a detailed story view
-                },
-                child: Container(
-                  width: 100, // Specify your desired width
-                  height: 150, // Specify your desired height
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: story![selectedIndex!].thumbnail,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      color: Colors.black.withOpacity(
-                          0.5), // Semi-transparent overlay for text visibility
-                      child: Text(
-                        story![selectedIndex!].name,
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+              child: Container(
+                width: MediaQuery.of(context).size.width /
+                    4, // Specify your desired width
+                height: 200, // Specify your desired height
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: story![selectedIndex!].thumbnail,
+                    fit: BoxFit.cover,
                   ),
                 ),
+                // child: Align(
+                //   alignment: Alignment.bottomCenter,
+                //   child: Container(
+                //     padding: EdgeInsets.all(8),
+                //     color: Colors.black.withOpacity(
+                //         0.5), // Semi-transparent overlay for text visibility
+                //     child: Text(
+                //       story![selectedIndex!].name,
+                //       style: TextStyle(color: Colors.white, fontSize: 12),
+                //       textAlign: TextAlign.center,
+                //     ),
+                //   ),
+                // ),
               ),
             ),
           ),
