@@ -239,7 +239,7 @@ class FullPageViewState extends State<FullPageView> {
                                               horizontal: 2),
                                           height: 2.5,
                                           width:
-                                              20, // Consider adjusting if needed
+                                              15, // Consider adjusting if needed
                                           decoration: BoxDecoration(
                                             color:
                                                 widget.fullpageUnvisitedColor ??
