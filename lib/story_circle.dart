@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stories_for_flutter/full_page_view.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
 
@@ -150,7 +151,11 @@ class StoryCircle extends StatelessWidget {
           showStoryName
               ? Text(
                   story![selectedIndex!].name,
-                  style: storyCircleTextStyle ?? const TextStyle(fontSize: 13),
+                  style: GoogleFonts.poppins(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 )
               : const Center()
         ],
