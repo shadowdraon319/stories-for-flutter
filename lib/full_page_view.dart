@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FullPageView extends StatefulWidget {
   final List<StoryItem>? storiesMapList;
@@ -270,7 +271,7 @@ class FullPageViewState extends State<FullPageView> {
 
                       SizedBox(
                           height:
-                              10), // Space between the status bar and story name
+                              5), // Space between the status bar and story name
                       Text(
                         showStoryNameOnFullPage
                             ? storiesMapList![getStoryIndex(
@@ -278,18 +279,16 @@ class FullPageViewState extends State<FullPageView> {
                                 .name
                             : "",
                         textAlign: TextAlign.center, // Center the story name
-                        style: widget.fullPagetitleStyle ??
-                            TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: GoogleFonts.poppins(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              // Add other UI elements as needed below
             ],
           )
         ],
