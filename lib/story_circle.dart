@@ -152,8 +152,8 @@ class StoryCircle extends StatelessWidget {
               ? Text(
                   story![selectedIndex!].name,
                   style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),
                 )
