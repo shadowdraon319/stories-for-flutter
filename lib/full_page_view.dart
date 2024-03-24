@@ -170,7 +170,9 @@ class FullPageViewState extends State<FullPageView> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
+                            if(isIndexOnTapEnabled(index,storiesMapList!) == true){
                             nextPage(index);
+                            }
                           },
                           child: const Center(),
                         ),
@@ -301,11 +303,22 @@ List<Widget> getStoryList(List<StoryItem> storiesMapList) {
   List<Widget> imagesList = [];
   for (int i = 0; i < storiesMapList.length; i++) {
     for (int j = 0; j < storiesMapList[i].stories.length; j++) {
-      imagesList.add(storiesMapList[i].stories[j]);
+      imagesList.add(storiesMapList[i].stories[j].content);
     }
   }
   return imagesList;
 }
+
+bool isIndexOnTapEnabled(int index, List<StoryItem> storiesMapList) {
+  int temp = 0;
+  for (int i = 0; i < storiesMapList.length; i++) {
+    if (temp != storiesMapList[i].stories.length) index -= 1;
+    temp = storiesMapList[i].stories.length;
+    if (index < 0) return false;
+  }
+  return storiesMapList[index].stories[index].isTapEnabled;
+}
+
 
 List<int> getStoryLengths(List<StoryItem> storiesMapList) {
   List<int> intList = [];
@@ -316,6 +329,7 @@ List<int> getStoryLengths(List<StoryItem> storiesMapList) {
   }
   return intList;
 }
+
 
 int getCurrentLength(List<int> listLengths, int index) {
   index = index + 1;

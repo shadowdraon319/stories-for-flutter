@@ -131,9 +131,20 @@ class StoryItem {
   ImageProvider thumbnail;
 
   /// List of pages to display as stories under this story
-  List<Scaffold> stories;
+  List<StoryPage> stories;
 
   /// Add a story
   StoryItem(
       {required this.name, required this.thumbnail, required this.stories});
+}
+
+
+class StoryPage {
+  final Scaffold content;
+  final bool isTapEnabled; // New property to control tap interactions
+
+  StoryPage({
+    required this.content,
+    this.isTapEnabled = true, // Default to true to keep existing pages interactive
+  });
 }
