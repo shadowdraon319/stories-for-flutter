@@ -145,7 +145,7 @@ class FullPageViewState extends State<FullPageView> {
               if (widget.onPageChanged != null) widget.onPageChanged!();
             },
             controller: _pageController,
-            scrollDirection: Axis.horizontal,
+            //scrollDirection: Axis.horizontal,
             children: List.generate(
               combinedList.length,
               (index) => Stack(
