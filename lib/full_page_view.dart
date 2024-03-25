@@ -169,7 +169,7 @@ class FullPageViewState extends State<FullPageView> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 4,
+                        width: MediaQuery.of(context).size.width / 2,
                       ),
                       Expanded(
                         child: InkWell(
