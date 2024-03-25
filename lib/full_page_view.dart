@@ -169,7 +169,7 @@ class FullPageViewState extends State<FullPageView> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
+                        width: MediaQuery.of(context).size.width / 1.25,
                       ),
                       Expanded(
                         child: InkWell(
@@ -271,6 +271,7 @@ class FullPageViewState extends State<FullPageView> {
                                   color: Colors
                                       .white), // Example: Share button on the right
                               onPressed: () {
+
                                 // Implement share functionality
                               },
                             ),
