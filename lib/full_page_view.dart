@@ -170,8 +170,11 @@ class FullPageViewState extends State<FullPageView> {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            if(isIndexOnTapEnabled(index,storiesMapList!) == true){
-                            nextPage(index);
+                            if (isIndexOnTapEnabled(index, storiesMapList!) ==
+                                true) {
+                              nextPage(index);
+                            } else {
+                              print('no tap enabled');
                             }
                           },
                           child: const Center(),
@@ -310,15 +313,20 @@ List<Widget> getStoryList(List<StoryItem> storiesMapList) {
 }
 
 bool isIndexOnTapEnabled(int index, List<StoryItem> storiesMapList) {
-  int temp = 0;
-  for (int i = 0; i < storiesMapList.length; i++) {
-    if (temp != storiesMapList[i].stories.length) index -= 1;
-    temp = storiesMapList[i].stories.length;
-    if (index < 0) return false;
-  }
-  return storiesMapList[index].stories[index].isTapEnabled;
-}
+  int currentIndex = index; // Use a mutable index that can be adjusted
 
+  for (StoryItem storyItem in storiesMapList) {
+    if (currentIndex < storyItem.stories.length) {
+      // If the current index is within the range of the current StoryItem's stories
+      return storyItem.stories[currentIndex].isTapEnabled;
+    } else {
+      // Adjust the index by subtracting the length of the current StoryItem's stories
+      currentIndex -= storyItem.stories.length;
+    }
+  }
+  // If the index is out of range of the stories structure
+  return false; // Or handle this case as appropriate for your app
+}
 
 List<int> getStoryLengths(List<StoryItem> storiesMapList) {
   List<int> intList = [];
@@ -329,7 +337,6 @@ List<int> getStoryLengths(List<StoryItem> storiesMapList) {
   }
   return intList;
 }
-
 
 int getCurrentLength(List<int> listLengths, int index) {
   index = index + 1;
