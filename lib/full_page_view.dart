@@ -145,7 +145,10 @@ class FullPageViewState extends State<FullPageView> {
               if (widget.onPageChanged != null) widget.onPageChanged!();
             },
             controller: _pageController,
-            physics: NeverScrollableScrollPhysics(),
+            physics:
+                isIndexOnSwipeEnabled(selectedIndex!, storiesMapList!) == true
+                    ? PageScrollPhysics()
+                    : NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: List.generate(
               combinedList.length,
@@ -166,7 +169,7 @@ class FullPageViewState extends State<FullPageView> {
                         ),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 3,
+                        width: MediaQuery.of(context).size.width / 4,
                       ),
                       Expanded(
                         child: InkWell(
@@ -320,6 +323,22 @@ bool isIndexOnTapEnabled(int index, List<StoryItem> storiesMapList) {
     if (currentIndex < storyItem.stories.length) {
       // If the current index is within the range of the current StoryItem's stories
       return storyItem.stories[currentIndex].isTapEnabled;
+    } else {
+      // Adjust the index by subtracting the length of the current StoryItem's stories
+      currentIndex -= storyItem.stories.length;
+    }
+  }
+  // If the index is out of range of the stories structure
+  return false; // Or handle this case as appropriate for your app
+}
+
+bool isIndexOnSwipeEnabled(int index, List<StoryItem> storiesMapList) {
+  int currentIndex = index; // Use a mutable index that can be adjusted
+
+  for (StoryItem storyItem in storiesMapList) {
+    if (currentIndex < storyItem.stories.length) {
+      // If the current index is within the range of the current StoryItem's stories
+      return storyItem.stories[currentIndex].isSwipeEnabled;
     } else {
       // Adjust the index by subtracting the length of the current StoryItem's stories
       currentIndex -= storyItem.stories.length;

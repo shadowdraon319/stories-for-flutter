@@ -138,13 +138,15 @@ class StoryItem {
       {required this.name, required this.thumbnail, required this.stories});
 }
 
-
 class StoryPage {
   final Scaffold content;
   final bool isTapEnabled; // New property to control tap interactions
+  final bool isSwipeEnabled;
 
   StoryPage({
     required this.content,
-    this.isTapEnabled = true, // Default to true to keep existing pages interactive
+    this.isTapEnabled =
+        true, // Default to true to keep existing pages interactive
+    this.isSwipeEnabled = true,
   });
 }
