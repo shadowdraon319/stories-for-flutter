@@ -281,8 +281,10 @@ class FullPageViewState extends State<FullPageView> {
 Explore Islamic prayer step-by-step with Quran Chat! Learn, understand, and deepen your prayer practice with ease.
 
 Start your journey of spiritual growth:
-- Android: $appLinkAndroid
+
 - iOS: $appLinkIOS
+
+- Android: $appLinkAndroid
 
 Embrace the serenity of prayer with Quran Chat today.
 ''';
