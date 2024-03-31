@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 
 class FullPageView extends StatefulWidget {
   final List<StoryItem>? storiesMapList;
@@ -271,7 +272,22 @@ class FullPageViewState extends State<FullPageView> {
                                   color: Colors
                                       .white), // Example: Share button on the right
                               onPressed: () {
+                                String appLinkAndroid =
+                                    'https://play.google.com/store/apps/details?id=com.sabres.deenaichat';
+                                String appLinkIOS =
+                                    'https://apps.apple.com/app/id6473773084';
 
+                                String shareMessage = '''
+Explore Islamic prayer step-by-step with Quran Chat! Learn, understand, and deepen your prayer practice with ease.
+
+Start your journey of spiritual growth:
+- Android: $appLinkAndroid
+- iOS: $appLinkIOS
+
+Embrace the serenity of prayer with Quran Chat today.
+''';
+
+                                Share.share(shareMessage);
                                 // Implement share functionality
                               },
                             ),
