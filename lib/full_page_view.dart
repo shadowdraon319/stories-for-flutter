@@ -111,11 +111,23 @@ class FullPageViewState extends State<FullPageView> {
     combinedList = getStoryList(storiesMapList!);
     listLengths = getStoryLengths(storiesMapList!);
     selectedIndex = getInitialIndex(storyNumber!, storiesMapList);
+    print(
+        'Init State: selectedIndex = $selectedIndex'); // Print the selectedIndex
 
-    // Calculate total stories count
-    int totalStories = getTotalStories(storiesMapList);
-    // Set displayProgress based on the total number of stories
-    displayProgress = (widget.displayProgress ?? true) && totalStories > 1;
+    // Assuming storyNumber corresponds to the index of the currently selected StoryItem
+    // and checking the condition if the current StoryItem has more than one story.
+    int currentStoryCount = storiesMapList != null &&
+            storiesMapList!.isNotEmpty &&
+            storyNumber != null
+        ? storiesMapList![storyNumber!].stories.length
+        : 0;
+
+    print(
+        'Init State: currentStoryCount = $currentStoryCount'); // Print the count of stories in the current StoryItem
+
+    displayProgress = (widget.displayProgress ?? true) && currentStoryCount > 1;
+    print(
+        'Init State: displayProgress = $displayProgress'); // Print the state of displayProgress
 
     fullpageVisitedColor = widget.fullpageVisitedColor;
     fullpageUnvisitedColor = widget.fullpageUnvisitedColor;
