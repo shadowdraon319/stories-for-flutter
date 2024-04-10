@@ -426,5 +426,6 @@ int getTotalStories(List<StoryItem>? storiesMapList) {
   for (StoryItem? storyItem in storiesMapList!) {
     totalStories += storyItem!.stories.length;
   }
+  print("Total stories: $totalStories"); // Debug print
   return totalStories;
 }
