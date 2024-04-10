@@ -112,7 +112,11 @@ class FullPageViewState extends State<FullPageView> {
     listLengths = getStoryLengths(storiesMapList!);
     selectedIndex = getInitialIndex(storyNumber!, storiesMapList);
 
-    displayProgress = widget.displayProgress ?? true;
+    // Calculate total stories count
+    int totalStories = getTotalStories(storiesMapList);
+    // Set displayProgress based on the total number of stories
+    displayProgress = (widget.displayProgress ?? true) && totalStories > 1;
+
     fullpageVisitedColor = widget.fullpageVisitedColor;
     fullpageUnvisitedColor = widget.fullpageUnvisitedColor;
     showThumbnailOnFullPage = widget.showThumbnailOnFullPage;
@@ -195,7 +199,7 @@ class FullPageViewState extends State<FullPageView> {
           Column(
             children: <Widget>[
               Container(
-                color: Colors.grey[900], // Background color set to gold
+                color: Color(0xff121931), // Background color set to gold
                 child: SafeArea(
                   child: Column(
                     children: [
@@ -415,4 +419,12 @@ int getStoryIndex(List<int> listLengths, int index) {
     temp = listLengths[i];
   }
   return val;
+}
+
+int getTotalStories(List<StoryItem>? storiesMapList) {
+  int totalStories = 0;
+  for (StoryItem? storyItem in storiesMapList!) {
+    totalStories += storyItem!.stories.length;
+  }
+  return totalStories;
 }
